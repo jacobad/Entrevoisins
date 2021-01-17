@@ -11,7 +11,7 @@ public class DetailProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_profile);
-        getSupportActionBar().setTitle("...");
+        getSupportActionBar().setTitle("....");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
