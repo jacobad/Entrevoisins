@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity_detail_profile"></activity>
+        <activity android:name=".ui.neighbour_list.DetailProfileActivity"
+            android:parentActivityName=".ui.neighbour_list.DetailProfileActivity"></activity>
         <activity
             android:name=".FavAddActivity"
             android:parentActivityName=".ui.neighbour_list.ListNeighbourActivity" />
