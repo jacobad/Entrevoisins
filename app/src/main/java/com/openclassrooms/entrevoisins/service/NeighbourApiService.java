@@ -29,4 +29,6 @@ public interface NeighbourApiService {
     void createNeighbour(Neighbour neighbour);
 
     List<Neighbour> getFavoriteNeighbours();
+
+    void addFavNeighbours(Neighbour neighbour);
 }

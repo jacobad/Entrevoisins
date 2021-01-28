@@ -26,6 +26,7 @@ import butterknife.ButterKnife;
 public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeighbourRecyclerViewAdapter.ViewHolder> {
 
     private final List<Neighbour> mNeighbours;
+    public static final String DETAIL_PROFILE = "detailProfile";
 
     public MyNeighbourRecyclerViewAdapter(List<Neighbour> items) {
         mNeighbours = items;
@@ -61,11 +62,9 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
 
                 Context context = holder.itemView.getContext();
                 Intent profileActivity = new Intent(context, DetailProfileActivity.class);
+                Neighbour detailProfile = neighbour;
+                profileActivity.putExtra(DETAIL_PROFILE, detailProfile);
                 context.startActivity(profileActivity);
-                Glide.with(holder.mNeighbourAvatar.getContext())
-                        .load(neighbour.getAvatarUrl())
-                        .apply(RequestOptions.circleCropTransform())
-                        .into(holder.mNeighbourAvatar);
             }
         });
     }
@@ -88,4 +87,5 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             ButterKnife.bind(this, view);
         }
     }
+
 }

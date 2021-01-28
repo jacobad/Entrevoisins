@@ -47,6 +47,7 @@ public class Neighbour implements Parcelable {
         this.aboutMe = aboutMe;
     }
 
+
     public boolean isFavorite() {
         return isFavorite;
     }

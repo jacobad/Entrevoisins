@@ -39,7 +39,7 @@ public class NeighbourFragment extends Fragment {
     public static NeighbourFragment newInstance(boolean isFavorite) {
         NeighbourFragment fragment = new NeighbourFragment();
         Bundle bundle = new Bundle();
-        bundle.putBoolean(EXTRA_FAVORITE,isFavorite );
+        bundle.putBoolean(EXTRA_FAVORITE,isFavorite);
         fragment.setArguments(bundle);
         return fragment;
     }
