@@ -41,37 +41,34 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
     }
 
 
-    // get list des favoris
+    // get list neighbour's fav
     @Override
     public List<Neighbour> getFavoriteNeighbours() {
 
 
-        //cree un tab qui stock mes favoris
+        //create an array that stock my favorites
         ArrayList favorite = new ArrayList<>();
 
-        //verifie que chaqu'un des mes neighbour sont fav ou pas grace au if
-        //puis je l'ajoute a mon tab de favoris
+        //check that each of my neighbors are fav or not thanks to the if
+        //then I add it to my fav's array
         for (Neighbour neighbour : neighbours) {
             if (neighbour.isFavorite()) {
                 favorite.add(neighbour);
             }
         }
-        // retourne mon tableau de favoris
         return favorite;
     }
 
 
 
-    // fonction qui permet d'ajouer les neighbour en
-
     @Override
-    public void addFavNeighbours(Neighbour neighbour) {
+    public void updateFavNeighbours(Neighbour neighbour) {
 
-        //Boucle for pour trouver "MON" neighbour dans la list neighbour
-        for (Neighbour favNeighbour : getNeighbours()) {
-            //Condition pour trouver "MON" neighhbour avec son ID
+        //For loop to find "MY" neighbor in the neighbor list
+        for (Neighbour favNeighbour : neighbours) {
+            //Condition to find "MY" neighbor with his ID
             if (neighbour.getId() == favNeighbour.getId()) {
-                //"Mon" neighbour a été trouver je change son favorite-->(vraie)
+                //"My" neighbor has found I change his favorite -> (true)
                 favNeighbour.setFavorite(neighbour.isFavorite());
 
             }

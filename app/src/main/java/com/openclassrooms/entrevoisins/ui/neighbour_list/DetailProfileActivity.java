@@ -1,8 +1,5 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.ColorRes;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -103,7 +100,7 @@ public class DetailProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //
                 neighbour.setFavorite(!neighbour.isFavorite());
-                mFavApiService.addFavNeighbours(neighbour);
+                mFavApiService.updateFavNeighbours(neighbour);
                 updateStarColor();
 
             }
