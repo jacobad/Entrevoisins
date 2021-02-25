@@ -62,17 +62,18 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
 
                 Context context = holder.itemView.getContext();
                 Intent profileActivity = new Intent(context, DetailProfileActivity.class);
-                Neighbour detailProfile = neighbour;
-                profileActivity.putExtra(DETAIL_PROFILE, detailProfile);
+                profileActivity.putExtra(DETAIL_PROFILE, neighbour);
                 context.startActivity(profileActivity);
             }
         });
     }
 
     @Override
+    //size of list
     public int getItemCount() {
         return mNeighbours.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_list_avatar)

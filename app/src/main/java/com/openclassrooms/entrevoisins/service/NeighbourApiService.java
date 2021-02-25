@@ -30,5 +30,7 @@ public interface NeighbourApiService {
 
     List<Neighbour> getFavoriteNeighbours();
 
-    void updateFavNeighbours(Neighbour neighbour);
+
+    void updateNeighbour(Neighbour neighbour);
+
 }

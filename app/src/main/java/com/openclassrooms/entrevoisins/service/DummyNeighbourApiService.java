@@ -4,7 +4,6 @@ import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Dummy mock for the Api
@@ -49,8 +48,8 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
         //create an array that stock my favorites
         ArrayList favorite = new ArrayList<>();
 
-        //check that each of my neighbors are fav or not thanks to the if
-        //then I add it to my fav's array
+        //check that each of my neighbors are fav or not 'thanks to' the IF condition
+        //then add it to my fav's array
         for (Neighbour neighbour : neighbours) {
             if (neighbour.isFavorite()) {
                 favorite.add(neighbour);
@@ -62,14 +61,15 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
 
     @Override
-    public void updateFavNeighbours(Neighbour neighbour) {
+    public void updateNeighbour(Neighbour updatedNeighbour) {
 
         //For loop to find "MY" neighbor in the neighbor list
-        for (Neighbour favNeighbour : neighbours) {
+        for (Neighbour neighbour : neighbours) {
             //Condition to find "MY" neighbor with his ID
-            if (neighbour.getId() == favNeighbour.getId()) {
+            if (updatedNeighbour.getId() == neighbour.getId()) {
                 //"My" neighbor has found I change his favorite -> (true)
-                favNeighbour.setFavorite(neighbour.isFavorite());
+                neighbour.setFavorite(updatedNeighbour.isFavorite());
+                return;
 
             }
         }

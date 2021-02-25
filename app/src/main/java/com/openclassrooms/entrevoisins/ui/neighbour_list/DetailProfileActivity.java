@@ -48,13 +48,11 @@ public class DetailProfileActivity extends AppCompatActivity {
     }
 
 
-
     public void neighbourViewDetails() {
 
-        setContentView(R.layout.activity_detail_profile);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 
@@ -79,28 +77,24 @@ public class DetailProfileActivity extends AppCompatActivity {
     private void updateStarColor() {
         if (neighbour.isFavorite()) { // les fav
             fab.setImageResource(R.drawable.ic_baseline_star_91);
-            fab.hide();
-            fab.show();
+
         } else {  // les non fav
             fab.setImageResource(R.drawable.ic_baseline_star_90);
-            fab.hide();
-            fab.show();
+
         }
     }
 
 
-    // Methode qui lie mon FAB a cette page et a ma methode ajout de neighbour fav
+
     public void fabOnClickListener() {
 
-
-        //le fab reagit au click
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            // et a sa nouvelle vue
+
             public void onClick(View view) {
                 //
                 neighbour.setFavorite(!neighbour.isFavorite());
-                mFavApiService.updateFavNeighbours(neighbour);
+                mFavApiService.updateNeighbour(neighbour);
                 updateStarColor();
 
             }

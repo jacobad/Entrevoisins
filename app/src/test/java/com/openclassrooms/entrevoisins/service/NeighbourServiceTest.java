@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -28,11 +27,18 @@ public class NeighbourServiceTest {
 
 
 
-
-
     @Before
     public void setup() {
         service = DI.getNewInstanceApiService();
+    }
+
+
+    private void resetFavoriteToFalse() {
+        List<Neighbour> neighbours = service.getNeighbours();
+        for(Neighbour neighbour: neighbours){
+            neighbour.setFavorite(false);
+            service.updateNeighbour(neighbour);
+        }
     }
 
 
@@ -52,7 +58,7 @@ public class NeighbourServiceTest {
 
     @Test
     public void getFavoriteNeighboursWithSuccess() {
-
+        resetFavoriteToFalse();
         Neighbour neighbour = service.getNeighbours().get(0);
         neighbour.setFavorite(true);
         assertEquals(service.getFavoriteNeighbours().size(), 1);
@@ -63,21 +69,24 @@ public class NeighbourServiceTest {
     @Test
     public void updateFavoriteNeighbourWithSuccess() {
 
+        resetFavoriteToFalse();
         Neighbour neighbour = service.getNeighbours().get(0);
+        assertFalse(neighbour.isFavorite());
         neighbour.setFavorite(false);
         Neighbour neighbour1 = new Neighbour(neighbour.getId(),neighbour.getName(),neighbour.getAvatarUrl(),neighbour.getAddress(), neighbour.getPhoneNumber(), neighbour.getAboutMe());
         neighbour1.setFavorite(true);
-        service.updateFavNeighbours(neighbour1);
+        service.updateNeighbour(neighbour1);
         assertTrue(neighbour.isFavorite());
     }
 
-
     @Test
     public void deleteFavoriteNeighboursWithSuccess() {
-        Neighbour neighbourToDelete = DummyNeighbourGenerator.DUMMY_NEIGHBOURS.get(0);
-        neighbourToDelete.setFavorite(true);
-        service.getFavoriteNeighbours();
-        service.deleteNeighbour(neighbourToDelete);
-        assertFalse(service.getFavoriteNeighbours().contains(neighbourToDelete));
+        resetFavoriteToFalse();
+        Neighbour neighbour = service.getNeighbours().get(0);
+        neighbour.setFavorite(true);
+        service.updateNeighbour(neighbour);
+        neighbour = service.getFavoriteNeighbours().get(0);
+        service.deleteNeighbour(neighbour);
+        assertFalse(service.getNeighbours().contains(neighbour));
     }
 }
