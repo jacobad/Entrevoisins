@@ -17,9 +17,6 @@
             android:parentActivityName=".ui.neighbour_list.DetailProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".FavAddActivity"
-            android:parentActivityName=".ui.neighbour_list.ListNeighbourActivity" />
-        <activity
             android:name=".ui.neighbour_list.AddNeighbourActivity"
             android:label="@string/activity_new_neighbour" />
         <activity

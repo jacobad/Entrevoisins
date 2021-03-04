@@ -43,6 +43,7 @@ public class NeighboursListTest {
     public void setUp() {
         mActivity = mActivityRule.getActivity();
         assertThat(mActivity, notNullValue());
+
     }
 
     /**
@@ -54,6 +55,7 @@ public class NeighboursListTest {
         onView(ViewMatchers.withId(R.id.list_neighbours))
                 .check(matches(hasMinimumChildCount(1)));
     }
+
 
     /**
      * When we delete an item, the item is no more shown
